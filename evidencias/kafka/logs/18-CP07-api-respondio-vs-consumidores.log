@@ -1,0 +1,26 @@
+$ docker compose logs --since 30s orders-api | grep publicado; echo; docker compose logs --since 30s inventory-consumer billing-consumer notification-consumer | grep Procesado
+orders-api  | 2026-10-25T01:27:02.395Z [orders-api] Evento OrderCreated publicado topic=orders.events partition=2 offset=0 orderId=ORD-1002-MVN5DPMH eventId=evt-e10d7f11-91a1-4d87-a35c-c928df4b720e correlationId=corr-traza-kafka-01 respuestaEn=2.27ms
+orders-api  | 2026-10-25T01:27:12.991Z [orders-api] Evento OrderCreated publicado topic=orders.events partition=1 offset=1 orderId=ORD-1003-MVN5DXST eventId=evt-00705bf2-d1b3-47a4-90c0-0bb42d543d0e correlationId=corr-qa-1792891632-1 respuestaEn=2.05ms
+orders-api  | 2026-10-25T01:27:13.003Z [orders-api] Evento OrderCreated publicado topic=orders.events partition=0 offset=0 orderId=ORD-1004-MVN5DXT5 eventId=evt-ee70c08b-d0c3-4a9e-a518-ed9578145567 correlationId=corr-qa-1792891632-2 respuestaEn=2.13ms
+orders-api  | 2026-10-25T01:27:13.014Z [orders-api] Evento OrderCreated publicado topic=orders.events partition=2 offset=1 orderId=ORD-1005-MVN5DXTG eventId=evt-0af7b765-7fe0-4fb8-b855-ce66695c5db4 correlationId=corr-qa-1792891633-3 respuestaEn=1.75ms
+orders-api  | 2026-10-25T01:27:13.024Z [orders-api] Evento OrderCreated publicado topic=orders.events partition=2 offset=2 orderId=ORD-1006-MVN5DXTQ eventId=evt-7d876a94-683e-4e18-80ce-8b6fd34682c9 correlationId=corr-qa-1792891633-4 respuestaEn=1.60ms
+orders-api  | 2026-10-25T01:27:13.035Z [orders-api] Evento OrderCreated publicado topic=orders.events partition=2 offset=3 orderId=ORD-1007-MVN5DXU1 eventId=evt-4b92dcab-b183-4cbc-8c9a-0dacf8c582fe correlationId=corr-qa-1792891633-5 respuestaEn=1.74ms
+
+billing-consumer-1  | 2026-10-25T01:27:04.146Z [billing-consumer 2f5abec19ebb] Procesado orderId=ORD-1002-MVN5DPMH partition=2 offset=0 totalProcesadosPorEstaInstancia=2
+billing-consumer-1  | 2026-10-25T01:27:14.948Z [billing-consumer 2f5abec19ebb] Procesado orderId=ORD-1003-MVN5DXST partition=1 offset=1 totalProcesadosPorEstaInstancia=3
+billing-consumer-1  | 2026-10-25T01:27:16.066Z [billing-consumer 2f5abec19ebb] Procesado orderId=ORD-1005-MVN5DXTG partition=2 offset=1 totalProcesadosPorEstaInstancia=4
+billing-consumer-1  | 2026-10-25T01:27:17.652Z [billing-consumer 2f5abec19ebb] Procesado orderId=ORD-1006-MVN5DXTQ partition=2 offset=2 totalProcesadosPorEstaInstancia=5
+billing-consumer-1  | 2026-10-25T01:27:19.516Z [billing-consumer 2f5abec19ebb] Procesado orderId=ORD-1007-MVN5DXU1 partition=2 offset=3 totalProcesadosPorEstaInstancia=6
+billing-consumer-1  | 2026-10-25T01:27:21.371Z [billing-consumer 2f5abec19ebb] Procesado orderId=ORD-1004-MVN5DXT5 partition=0 offset=0 totalProcesadosPorEstaInstancia=7
+notification-consumer-1  | 2026-10-25T01:27:03.676Z [notification-consumer b4ea27241635] Procesado orderId=ORD-1002-MVN5DPMH partition=2 offset=0 totalProcesadosPorEstaInstancia=2
+notification-consumer-1  | 2026-10-25T01:27:14.221Z [notification-consumer b4ea27241635] Procesado orderId=ORD-1003-MVN5DXST partition=1 offset=1 totalProcesadosPorEstaInstancia=3
+notification-consumer-1  | 2026-10-25T01:27:15.788Z [notification-consumer b4ea27241635] Procesado orderId=ORD-1005-MVN5DXTG partition=2 offset=1 totalProcesadosPorEstaInstancia=4
+inventory-consumer-1     | 2026-10-25T01:27:04.319Z [inventory-consumer 7e47979f8adc] Procesado orderId=ORD-1002-MVN5DPMH partition=2 offset=0 totalProcesadosPorEstaInstancia=2
+inventory-consumer-1     | 2026-10-25T01:27:14.014Z [inventory-consumer 7e47979f8adc] Procesado orderId=ORD-1003-MVN5DXST partition=1 offset=1 totalProcesadosPorEstaInstancia=3
+inventory-consumer-1     | 2026-10-25T01:27:15.144Z [inventory-consumer 7e47979f8adc] Procesado orderId=ORD-1004-MVN5DXT5 partition=0 offset=0 totalProcesadosPorEstaInstancia=4
+inventory-consumer-1     | 2026-10-25T01:27:16.857Z [inventory-consumer 7e47979f8adc] Procesado orderId=ORD-1005-MVN5DXTG partition=2 offset=1 totalProcesadosPorEstaInstancia=5
+inventory-consumer-1     | 2026-10-25T01:27:18.000Z [inventory-consumer 7e47979f8adc] Procesado orderId=ORD-1006-MVN5DXTQ partition=2 offset=2 totalProcesadosPorEstaInstancia=6
+inventory-consumer-1     | 2026-10-25T01:27:19.212Z [inventory-consumer 7e47979f8adc] Procesado orderId=ORD-1007-MVN5DXU1 partition=2 offset=3 totalProcesadosPorEstaInstancia=7
+notification-consumer-1  | 2026-10-25T01:27:16.996Z [notification-consumer b4ea27241635] Procesado orderId=ORD-1006-MVN5DXTQ partition=2 offset=2 totalProcesadosPorEstaInstancia=5
+notification-consumer-1  | 2026-10-25T01:27:18.947Z [notification-consumer b4ea27241635] Procesado orderId=ORD-1007-MVN5DXU1 partition=2 offset=3 totalProcesadosPorEstaInstancia=6
+notification-consumer-1  | 2026-10-25T01:27:20.770Z [notification-consumer b4ea27241635] Procesado orderId=ORD-1004-MVN5DXT5 partition=0 offset=0 totalProcesadosPorEstaInstancia=7

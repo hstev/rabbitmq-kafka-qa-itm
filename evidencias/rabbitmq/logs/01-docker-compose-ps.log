@@ -1,0 +1,5 @@
+$ docker compose ps --format 'table {{.Name}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'
+NAME                                 IMAGE                              STATUS                    PORTS
+orders-api                           rabbitmq-lab-orders-api            Up 10 seconds             0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp
+rabbitmq                             rabbitmq:4-management              Up 16 seconds (healthy)   0.0.0.0:5672->5672/tcp, [::]:5672->5672/tcp, 0.0.0.0:15672->15672/tcp, [::]:15672->15672/tcp
+rabbitmq-lab-notification-worker-1   rabbitmq-lab-notification-worker   Up 10 seconds             

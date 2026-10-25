@@ -1,0 +1,16 @@
+$ docker compose ps --format 'table {{.Service}}\t{{.Ports}}'; echo; grep -A3 dependencies notification-worker/package.json; echo; grep -n 'RABBITMQ_URL=' docker-compose.yml; echo; docker compose exec -T orders-api wget -qO- -T 3 http://notification-worker:3000 || echo '=> El worker no expone HTTP: no hay comunicacion directa'
+SERVICE               PORTS
+orders-api            0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp
+rabbitmq              0.0.0.0:5672->5672/tcp, [::]:5672->5672/tcp, 0.0.0.0:15672->15672/tcp, [::]:15672->15672/tcp
+notification-worker   
+
+  "dependencies": {
+    "amqplib": "^0.10.4"
+  }
+}
+
+31:      - RABBITMQ_URL=amqp://admin:admin@rabbitmq:5672
+43:      - RABBITMQ_URL=amqp://admin:admin@rabbitmq:5672
+
+wget: can't connect to remote host (172.18.0.3): Connection refused
+=> El worker no expone HTTP: no hay comunicacion directa

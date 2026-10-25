@@ -1,0 +1,20 @@
+$ docker compose up -d --scale notification-worker=3 && docker compose ps notification-worker --format 'table {{.Name}}\t{{.Status}}'
+ Container orders-api Running 
+ Container rabbitmq-lab-notification-worker-1 Running 
+ Container rabbitmq Running 
+ Container rabbitmq-lab-notification-worker-3 Creating 
+ Container rabbitmq-lab-notification-worker-2 Creating 
+ Container rabbitmq-lab-notification-worker-3 Created 
+ Container rabbitmq-lab-notification-worker-2 Created 
+ Container rabbitmq Waiting 
+ Container rabbitmq Waiting 
+ Container rabbitmq Healthy 
+ Container rabbitmq Healthy 
+ Container rabbitmq-lab-notification-worker-3 Starting 
+ Container rabbitmq-lab-notification-worker-3 Started 
+ Container rabbitmq-lab-notification-worker-2 Starting 
+ Container rabbitmq-lab-notification-worker-2 Started 
+NAME                                 STATUS
+rabbitmq-lab-notification-worker-1   Up About a minute
+rabbitmq-lab-notification-worker-2   Up Less than a second
+rabbitmq-lab-notification-worker-3   Up Less than a second

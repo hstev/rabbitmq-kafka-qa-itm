@@ -1,0 +1,28 @@
+$ ../scripts/send-orders.sh kafka 9 | grep -E 'Pedido|HTTP'
+[20:36:43] Pedido 1/9 -> {"customerName":"Pedro","product":"Libro de arquitectura","quantity":1,"unitPrice":85000}
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1030-MVN5Q63F"}
+HTTP 202 | tiempo total: 0.005401s
+[20:36:43] Pedido 2/9 -> {"customerName":"Carlos","product":"Libro de arquitectura","quantity":2,"unitPrice":85000}
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1031-MVN5Q63S"}
+HTTP 202 | tiempo total: 0.002897s
+[20:36:43] Pedido 3/9 -> {"customerName":"Ana","product":"Libro de arquitectura","quantity":3,"unitPrice":85000}
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1032-MVN5Q642"}
+HTTP 202 | tiempo total: 0.002567s
+[20:36:43] Pedido 4/9 -> {"customerName":"Lucia","product":"Libro de arquitectura","quantity":4,"unitPrice":85000}
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1033-MVN5Q64B"}
+HTTP 202 | tiempo total: 0.002876s
+[20:36:43] Pedido 5/9 -> {"customerName":"Mateo","product":"Libro de arquitectura","quantity":5,"unitPrice":85000}
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1034-MVN5Q64L"}
+HTTP 202 | tiempo total: 0.002271s
+[20:36:43] Pedido 6/9 -> {"customerName":"Sofia","product":"Libro de arquitectura","quantity":6,"unitPrice":85000}
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1035-MVN5Q64U"}
+HTTP 202 | tiempo total: 0.002267s
+[20:36:43] Pedido 7/9 -> {"customerName":"Pedro","product":"Libro de arquitectura","quantity":7,"unitPrice":85000}
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1036-MVN5Q654"}
+HTTP 202 | tiempo total: 0.002449s
+[20:36:43] Pedido 8/9 -> {"customerName":"Carlos","product":"Libro de arquitectura","quantity":8,"unitPrice":85000}
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1037-MVN5Q65D"}
+HTTP 202 | tiempo total: 0.002456s
+[20:36:43] Pedido 9/9 -> {"customerName":"Ana","product":"Libro de arquitectura","quantity":9,"unitPrice":85000}
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1038-MVN5Q65M"}
+HTTP 202 | tiempo total: 0.002408s

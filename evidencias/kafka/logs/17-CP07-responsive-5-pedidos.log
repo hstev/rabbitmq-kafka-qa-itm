@@ -1,0 +1,21 @@
+$ ../scripts/send-orders.sh kafka 5
+
+[20:27:12] Pedido 1/5 -> {"customerName":"Pedro","product":"Libro de arquitectura","quantity":1,"unitPrice":85000}
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1003-MVN5DXST"}
+HTTP 202 | tiempo total: 0.004252s
+
+[20:27:12] Pedido 2/5 -> {"customerName":"Carlos","product":"Libro de arquitectura","quantity":2,"unitPrice":85000}
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1004-MVN5DXT5"}
+HTTP 202 | tiempo total: 0.004000s
+
+[20:27:13] Pedido 3/5 -> {"customerName":"Ana","product":"Libro de arquitectura","quantity":3,"unitPrice":85000}
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1005-MVN5DXTG"}
+HTTP 202 | tiempo total: 0.003226s
+
+[20:27:13] Pedido 4/5 -> {"customerName":"Lucia","product":"Libro de arquitectura","quantity":4,"unitPrice":85000}
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1006-MVN5DXTQ"}
+HTTP 202 | tiempo total: 0.003112s
+
+[20:27:13] Pedido 5/5 -> {"customerName":"Mateo","product":"Libro de arquitectura","quantity":5,"unitPrice":85000}
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1007-MVN5DXU1"}
+HTTP 202 | tiempo total: 0.003207s

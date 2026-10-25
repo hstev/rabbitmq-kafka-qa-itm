@@ -1,0 +1,9 @@
+$ docker compose logs kafka | grep -E 'Kafka Server started|Transitioning from RECOVERY to RUNNING'; docker compose logs kafka-init
+kafka  | [2026-10-25 01:24:54,035] INFO [BrokerLifecycleManager id=1] The broker has been unfenced. Transitioning from RECOVERY to RUNNING. (kafka.server.BrokerLifecycleManager)
+kafka  | [2026-10-25 01:24:54,039] INFO [KafkaRaftServer nodeId=1] Kafka Server started (kafka.server.KafkaRaftServer)
+kafka-init  | WARNING: Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide. To avoid issues it is best to use either, but not both.
+kafka-init  | Created topic orders.events.
+kafka-init  | Topic: orders.events	TopicId: c4nQfPf3R1u-Y6z0r1ZI0g	PartitionCount: 3	ReplicationFactor: 1	Configs: 
+kafka-init  | 	Topic: orders.events	Partition: 0	Leader: 1	Replicas: 1	Isr: 1
+kafka-init  | 	Topic: orders.events	Partition: 1	Leader: 1	Replicas: 1	Isr: 1
+kafka-init  | 	Topic: orders.events	Partition: 2	Leader: 1	Replicas: 1	Isr: 1

@@ -1,0 +1,13 @@
+{
+  "name": "orders-api-kafka",
+  "version": "1.0.0",
+  "description": "API REST productora de eventos OrderCreated hacia Kafka",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "kafkajs": "^2.2.4"
+  }
+}

@@ -1,0 +1,2 @@
+$ docker compose logs orders-api | grep 'Evento OrderCreated publicado'
+orders-api  | 2026-10-25T01:25:49.321Z [orders-api] Evento OrderCreated publicado topic=orders.events partition=1 offset=0 orderId=ORD-1001-MVN5C588 eventId=evt-b1b907af-7d12-424e-b224-d7ab4a278c02 correlationId=corr-00b0c4d5-712a-4d19-aef0-991cfe54cf1a respuestaEn=17.89ms

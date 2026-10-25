@@ -1,0 +1,52 @@
+name: rabbitmq-lab
+
+services:
+  rabbitmq:
+    image: rabbitmq:4-management
+    container_name: rabbitmq
+    hostname: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  orders-api:
+    restart: unless-stopped
+    build: ./orders-api
+    container_name: orders-api
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - RABBITMQ_URL=amqp://admin:admin@rabbitmq:5672
+      - RABBITMQ_QUEUE=pedidos
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  # Sin container_name para permitir: docker compose up -d --scale notification-worker=2
+  # Sin "ports": el worker no expone HTTP, solo habla AMQP con RabbitMQ.
+  notification-worker:
+    restart: unless-stopped
+    build: ./notification-worker
+    environment:
+      - RABBITMQ_URL=amqp://admin:admin@rabbitmq:5672
+      - RABBITMQ_QUEUE=pedidos
+      - PROCESSING_MIN_MS=2000
+      - PROCESSING_MAX_MS=5000
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+volumes:
+  rabbitmq-data:

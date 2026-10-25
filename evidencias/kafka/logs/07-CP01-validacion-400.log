@@ -1,0 +1,14 @@
+$ curl -i -X POST http://localhost:3000/orders -H 'Content-Type: application/json' -d '{"customerName":"Pedro","quantity":-1}'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   170  100   132  100    38  50113  14426 --:--:-- --:--:-- --:--:-- 85000
+HTTP/1.1 400 Bad Request
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 132
+ETag: W/"84-sWKg3qf0rZxXDk+IYLbmQgb8kNU"
+Date: Sun, 25 Oct 2026 01:25:54 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"status":"rejected","errors":["product es obligatorio","quantity debe ser un entero positivo","unitPrice debe ser un numero >= 0"]}

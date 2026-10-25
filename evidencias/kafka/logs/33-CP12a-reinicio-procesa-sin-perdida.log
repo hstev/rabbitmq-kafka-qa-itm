@@ -1,0 +1,20 @@
+$ docker compose start notification-consumer; sleep 45; docker compose logs --since 47s notification-consumer | grep -E 'Unido|recibido|Procesado'; docker compose exec -T kafka /opt/bitnami/kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group notification-service-group | awk 'NF{ if ($1=="Consumer") print; else printf "%-28s %-14s %-10s %-15s %-15s %s\n", $1,$2,$3,$4,$5,$6 }'
+ Container kafka Waiting 
+ Container kafka Healthy 
+ Container kafka-init Starting 
+ Container kafka-init Started 
+ Container kafka-init Waiting 
+ Container kafka-init Exited 
+ Container kafka-lab-notification-consumer-1 Starting 
+ Container kafka-lab-notification-consumer-1 Started 
+notification-consumer-1  | 2026-10-25T01:37:52.034Z [notification-consumer b4ea27241635] Unido al consumer group "notification-service-group" particiones asignadas={"orders.events":[0,1,2]}
+notification-consumer-1  | 2026-10-25T01:37:52.045Z [notification-consumer b4ea27241635] Evento recibido: OrderCreated orderId=ORD-1041-MVN5QYDA eventId=evt-6be96d13-d4d9-47c8-98eb-96d0546240c0 correlationId=corr-qa-1792892240-3 topic=orders.events partition=2 offset=12
+notification-consumer-1  | 2026-10-25T01:37:53.300Z [notification-consumer b4ea27241635] Procesado orderId=ORD-1041-MVN5QYDA partition=2 offset=12 totalProcesadosPorEstaInstancia=1
+notification-consumer-1  | 2026-10-25T01:37:53.303Z [notification-consumer b4ea27241635] Evento recibido: OrderCreated orderId=ORD-1042-MVN5QYDK eventId=evt-ac86fdfc-9ac1-4b4b-b74b-1089814f47f4 correlationId=corr-qa-1792892240-4 topic=orders.events partition=2 offset=13
+notification-consumer-1  | 2026-10-25T01:37:54.740Z [notification-consumer b4ea27241635] Procesado orderId=ORD-1042-MVN5QYDK partition=2 offset=13 totalProcesadosPorEstaInstancia=2
+notification-consumer-1  | 2026-10-25T01:37:54.744Z [notification-consumer b4ea27241635] Evento recibido: OrderCreated orderId=ORD-1040-MVN5QYD1 eventId=evt-2e2373b9-5b99-4718-a5e0-db320cb0ce1b correlationId=corr-qa-1792892240-2 topic=orders.events partition=1 offset=15
+notification-consumer-1  | 2026-10-25T01:37:55.813Z [notification-consumer b4ea27241635] Procesado orderId=ORD-1040-MVN5QYD1 partition=1 offset=15 totalProcesadosPorEstaInstancia=3
+GROUP                        TOPIC          PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG
+notification-service-group   orders.events  0          12              12              0
+notification-service-group   orders.events  1          16              16              0
+notification-service-group   orders.events  2          14              14              0

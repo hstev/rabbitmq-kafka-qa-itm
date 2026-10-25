@@ -1,0 +1,128 @@
+name: kafka-lab
+
+x-consumer-env: &consumer-env
+  KAFKA_BROKER: kafka:9092
+  KAFKA_TOPIC: orders.events
+  KAFKAJS_NO_PARTITIONER_WARNING: "1"
+  PROCESSING_MIN_MS: "1000"
+  PROCESSING_MAX_MS: "2000"
+
+services:
+  kafka:
+    image: bitnamilegacy/kafka:3.7
+    container_name: kafka
+    hostname: kafka
+    ports:
+      - "29092:29092"
+    environment:
+      - KAFKA_CFG_NODE_ID=1
+      - KAFKA_CFG_PROCESS_ROLES=broker,controller
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@kafka:9093
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,EXTERNAL://:29092,CONTROLLER://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092,EXTERNAL://localhost:29092
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT,CONTROLLER:PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - KAFKA_CFG_NUM_PARTITIONS=3
+      - KAFKA_CFG_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    volumes:
+      - kafka-data:/bitnami/kafka
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list >/dev/null 2>&1"]
+      interval: 10s
+      timeout: 10s
+      retries: 12
+      start_period: 20s
+
+  # Contenedor de una sola ejecucion: crea el topico con 3 particiones
+  # (necesario para repartir carga entre instancias del mismo consumer group).
+  kafka-init:
+    image: bitnamilegacy/kafka:3.7
+    container_name: kafka-init
+    entrypoint: ["/bin/bash", "-c"]
+    command:
+      - |
+        /opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server kafka:9092 \
+          --create --if-not-exists --topic orders.events --partitions 3 --replication-factor 1
+        /opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server kafka:9092 --describe --topic orders.events
+    depends_on:
+      kafka:
+        condition: service_healthy
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:v0.7.2
+    container_name: kafka-ui
+    ports:
+      - "8080:8080"
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=local
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9092
+    depends_on:
+      kafka:
+        condition: service_healthy
+
+  orders-api:
+    restart: unless-stopped
+    build: ./orders-api
+    container_name: orders-api
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - KAFKA_BROKER=kafka:9092
+      - KAFKA_TOPIC=orders.events
+      - KAFKAJS_NO_PARTITIONER_WARNING=1
+    depends_on:
+      kafka-init:
+        condition: service_completed_successfully
+
+  # Los consumidores no declaran container_name (permite --scale) ni ports
+  # (no exponen HTTP; solo hablan con Kafka).
+  inventory-consumer:
+    restart: unless-stopped
+    build: ./inventory-consumer
+    environment:
+      <<: *consumer-env
+      KAFKA_GROUP_ID: inventory-service-group
+    depends_on:
+      kafka-init:
+        condition: service_completed_successfully
+
+  billing-consumer:
+    restart: unless-stopped
+    build: ./billing-consumer
+    environment:
+      <<: *consumer-env
+      KAFKA_GROUP_ID: billing-service-group
+    depends_on:
+      kafka-init:
+        condition: service_completed_successfully
+
+  notification-consumer:
+    restart: unless-stopped
+    build: ./notification-consumer
+    environment:
+      <<: *consumer-env
+      KAFKA_GROUP_ID: notification-service-group
+    depends_on:
+      kafka-init:
+        condition: service_completed_successfully
+
+  # Consumidor "posterior" (CP-11 / seccion 9): solo arranca con --profile late,
+  # despues de publicar eventos, y debe leerlos desde el inicio del log.
+  audit-consumer:
+    restart: unless-stopped
+    build: ./notification-consumer
+    profiles: ["late"]
+    environment:
+      <<: *consumer-env
+      SERVICE_NAME: audit-consumer
+      SERVICE_ACTION: Registrando evento en auditoria
+      KAFKA_GROUP_ID: audit-service-group
+    depends_on:
+      kafka-init:
+        condition: service_completed_successfully
+
+volumes:
+  kafka-data:

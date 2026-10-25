@@ -1,0 +1,10 @@
+$ docker compose logs --since 45s notification-worker | grep 'ACK enviado'
+notification-worker-2  | 2026-10-25T01:07:15.756Z [notification-worker 49b6583bea2e] ACK enviado orderId=ORD-1013-MVN4O7YY correlationId=corr-qa-1792890433-3 totalProcesadosPorEstaInstancia=1
+notification-worker-2  | 2026-10-25T01:07:20.056Z [notification-worker 49b6583bea2e] ACK enviado orderId=ORD-1015-MVN4O7ZF correlationId=corr-qa-1792890433-5 totalProcesadosPorEstaInstancia=2
+notification-worker-2  | 2026-10-25T01:07:23.319Z [notification-worker 49b6583bea2e] ACK enviado orderId=ORD-1018-MVN4O803 correlationId=corr-qa-1792890433-8 totalProcesadosPorEstaInstancia=3
+notification-worker-3  | 2026-10-25T01:07:16.282Z [notification-worker 83b1a75c9a95] ACK enviado orderId=ORD-1012-MVN4O7YP correlationId=corr-qa-1792890433-2 totalProcesadosPorEstaInstancia=1
+notification-worker-3  | 2026-10-25T01:07:20.757Z [notification-worker 83b1a75c9a95] ACK enviado orderId=ORD-1016-MVN4O7ZM correlationId=corr-qa-1792890433-6 totalProcesadosPorEstaInstancia=2
+notification-worker-1  | 2026-10-25T01:07:15.518Z [notification-worker bd102aeb336a] ACK enviado orderId=ORD-1011-MVN4O7YG correlationId=corr-qa-1792890433-1 totalProcesadosPorEstaInstancia=10
+notification-worker-1  | 2026-10-25T01:07:18.766Z [notification-worker bd102aeb336a] ACK enviado orderId=ORD-1014-MVN4O7Z6 correlationId=corr-qa-1792890433-4 totalProcesadosPorEstaInstancia=11
+notification-worker-1  | 2026-10-25T01:07:23.130Z [notification-worker bd102aeb336a] ACK enviado orderId=ORD-1017-MVN4O7ZV correlationId=corr-qa-1792890433-7 totalProcesadosPorEstaInstancia=12
+notification-worker-3  | 2026-10-25T01:07:22.807Z [notification-worker 83b1a75c9a95] ACK enviado orderId=ORD-1019-MVN4O80B correlationId=corr-qa-1792890433-9 totalProcesadosPorEstaInstancia=3

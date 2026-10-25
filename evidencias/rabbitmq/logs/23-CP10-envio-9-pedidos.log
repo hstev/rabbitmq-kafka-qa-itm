@@ -1,0 +1,28 @@
+$ ../scripts/send-orders.sh rabbitmq 9 | grep -E 'Pedido|HTTP'
+[20:07:13] Pedido 1/9 -> {"customerName":"Pedro","product":"Libro de arquitectura","quantity":1}
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1011-MVN4O7YG"}
+HTTP 202 | tiempo total: 0.002308s
+[20:07:13] Pedido 2/9 -> {"customerName":"Carlos","product":"Libro de arquitectura","quantity":2}
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1012-MVN4O7YP"}
+HTTP 202 | tiempo total: 0.001776s
+[20:07:13] Pedido 3/9 -> {"customerName":"Ana","product":"Libro de arquitectura","quantity":3}
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1013-MVN4O7YY"}
+HTTP 202 | tiempo total: 0.001681s
+[20:07:13] Pedido 4/9 -> {"customerName":"Lucia","product":"Libro de arquitectura","quantity":4}
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1014-MVN4O7Z6"}
+HTTP 202 | tiempo total: 0.001511s
+[20:07:13] Pedido 5/9 -> {"customerName":"Mateo","product":"Libro de arquitectura","quantity":5}
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1015-MVN4O7ZF"}
+HTTP 202 | tiempo total: 0.001307s
+[20:07:13] Pedido 6/9 -> {"customerName":"Sofia","product":"Libro de arquitectura","quantity":6}
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1016-MVN4O7ZM"}
+HTTP 202 | tiempo total: 0.001562s
+[20:07:13] Pedido 7/9 -> {"customerName":"Pedro","product":"Libro de arquitectura","quantity":7}
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1017-MVN4O7ZV"}
+HTTP 202 | tiempo total: 0.001679s
+[20:07:13] Pedido 8/9 -> {"customerName":"Carlos","product":"Libro de arquitectura","quantity":8}
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1018-MVN4O803"}
+HTTP 202 | tiempo total: 0.001282s
+[20:07:13] Pedido 9/9 -> {"customerName":"Ana","product":"Libro de arquitectura","quantity":9}
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1019-MVN4O80B"}
+HTTP 202 | tiempo total: 0.001223s

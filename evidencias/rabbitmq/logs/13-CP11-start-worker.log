@@ -1,0 +1,5 @@
+$ docker compose start notification-worker
+ Container rabbitmq Waiting 
+ Container rabbitmq Healthy 
+ Container rabbitmq-lab-notification-worker-1 Starting 
+ Container rabbitmq-lab-notification-worker-1 Started 

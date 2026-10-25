@@ -1,0 +1,10 @@
+$ docker compose logs --since 20s inventory-consumer | grep Procesado
+inventory-consumer-2  | 2026-10-25T01:36:45.389Z [inventory-consumer 355cca8aced6] Procesado orderId=ORD-1036-MVN5Q654 partition=2 offset=10 totalProcesadosPorEstaInstancia=1
+inventory-consumer-3  | 2026-10-25T01:36:45.145Z [inventory-consumer 4aaa022def0a] Procesado orderId=ORD-1030-MVN5Q63F partition=1 offset=8 totalProcesadosPorEstaInstancia=1
+inventory-consumer-3  | 2026-10-25T01:36:46.160Z [inventory-consumer 4aaa022def0a] Procesado orderId=ORD-1031-MVN5Q63S partition=1 offset=9 totalProcesadosPorEstaInstancia=2
+inventory-consumer-3  | 2026-10-25T01:36:47.803Z [inventory-consumer 4aaa022def0a] Procesado orderId=ORD-1032-MVN5Q642 partition=1 offset=10 totalProcesadosPorEstaInstancia=3
+inventory-consumer-3  | 2026-10-25T01:36:49.240Z [inventory-consumer 4aaa022def0a] Procesado orderId=ORD-1034-MVN5Q64L partition=1 offset=11 totalProcesadosPorEstaInstancia=4
+inventory-consumer-3  | 2026-10-25T01:36:50.980Z [inventory-consumer 4aaa022def0a] Procesado orderId=ORD-1035-MVN5Q64U partition=1 offset=12 totalProcesadosPorEstaInstancia=5
+inventory-consumer-3  | 2026-10-25T01:36:51.995Z [inventory-consumer 4aaa022def0a] Procesado orderId=ORD-1037-MVN5Q65D partition=1 offset=13 totalProcesadosPorEstaInstancia=6
+inventory-consumer-1  | 2026-10-25T01:36:45.355Z [inventory-consumer 7e47979f8adc] Procesado orderId=ORD-1033-MVN5Q64B partition=0 offset=11 totalProcesadosPorEstaInstancia=25
+inventory-consumer-3  | 2026-10-25T01:36:53.673Z [inventory-consumer 4aaa022def0a] Procesado orderId=ORD-1038-MVN5Q65M partition=1 offset=14 totalProcesadosPorEstaInstancia=7

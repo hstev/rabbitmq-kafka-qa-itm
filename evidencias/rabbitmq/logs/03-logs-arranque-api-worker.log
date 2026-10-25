@@ -1,0 +1,4 @@
+$ docker compose logs orders-api notification-worker
+orders-api  | 2026-10-25T01:03:22.594Z [orders-api] Escuchando HTTP en puerto 3000
+orders-api  | 2026-10-25T01:03:22.643Z [orders-api] Conectado a RabbitMQ (amqp://***@rabbitmq:5672), cola "pedidos" declarada (durable)
+notification-worker-1  | 2026-10-25T01:03:22.484Z [notification-worker bd102aeb336a] Conectado a RabbitMQ. Escuchando cola "pedidos" (prefetch=1, ack manual)

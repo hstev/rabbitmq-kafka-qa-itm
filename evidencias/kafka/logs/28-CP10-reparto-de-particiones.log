@@ -1,0 +1,4 @@
+$ docker compose logs --since 25s inventory-consumer | grep 'particiones asignadas'
+inventory-consumer-2  | 2026-10-25T01:36:22.487Z [inventory-consumer 355cca8aced6] Unido al consumer group "inventory-service-group" particiones asignadas={"orders.events":[2]}
+inventory-consumer-3  | 2026-10-25T01:36:22.487Z [inventory-consumer 4aaa022def0a] Unido al consumer group "inventory-service-group" particiones asignadas={"orders.events":[1]}
+inventory-consumer-1  | 2026-10-25T01:36:22.485Z [inventory-consumer 7e47979f8adc] Unido al consumer group "inventory-service-group" particiones asignadas={"orders.events":[0]}

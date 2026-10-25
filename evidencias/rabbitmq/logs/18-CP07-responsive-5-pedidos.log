@@ -1,0 +1,21 @@
+$ ../scripts/send-orders.sh rabbitmq 5
+
+[20:06:14] Pedido 1/5 -> {"customerName":"Pedro","product":"Libro de arquitectura","quantity":1}
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1006-MVN4MYUH"}
+HTTP 202 | tiempo total: 0.002123s
+
+[20:06:14] Pedido 2/5 -> {"customerName":"Carlos","product":"Libro de arquitectura","quantity":2}
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1007-MVN4MYUQ"}
+HTTP 202 | tiempo total: 0.001747s
+
+[20:06:14] Pedido 3/5 -> {"customerName":"Ana","product":"Libro de arquitectura","quantity":3}
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1008-MVN4MYUZ"}
+HTTP 202 | tiempo total: 0.001825s
+
+[20:06:14] Pedido 4/5 -> {"customerName":"Lucia","product":"Libro de arquitectura","quantity":4}
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1009-MVN4MYV8"}
+HTTP 202 | tiempo total: 0.001906s
+
+[20:06:14] Pedido 5/5 -> {"customerName":"Mateo","product":"Libro de arquitectura","quantity":5}
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1010-MVN4MYVI"}
+HTTP 202 | tiempo total: 0.001799s

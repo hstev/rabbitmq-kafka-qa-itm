@@ -1,0 +1,11 @@
+$ docker compose start notification-worker; sleep 16; docker compose logs --since 18s notification-worker | grep -E 'Conectado|ACK'; docker compose exec -T rabbitmq rabbitmqctl -q list_queues name messages_ready messages_unacknowledged messages_persistent durable
+ Container rabbitmq Waiting 
+ Container rabbitmq Healthy 
+ Container rabbitmq-lab-notification-worker-1 Starting 
+ Container rabbitmq-lab-notification-worker-1 Started 
+notification-worker-1  | 2026-10-25T01:08:48.120Z [notification-worker bd102aeb336a] Conectado a RabbitMQ. Escuchando cola "pedidos" (prefetch=1, ack manual)
+notification-worker-1  | 2026-10-25T01:08:52.874Z [notification-worker bd102aeb336a] ACK enviado orderId=ORD-1023-MVN4PRE4 correlationId=corr-qa-1792890504-1 totalProcesadosPorEstaInstancia=1
+notification-worker-1  | 2026-10-25T01:08:55.385Z [notification-worker bd102aeb336a] ACK enviado orderId=ORD-1024-MVN4PRED correlationId=corr-qa-1792890504-2 totalProcesadosPorEstaInstancia=2
+notification-worker-1  | 2026-10-25T01:09:00.286Z [notification-worker bd102aeb336a] ACK enviado orderId=ORD-1025-MVN4PREL correlationId=corr-qa-1792890504-3 totalProcesadosPorEstaInstancia=3
+name	messages_ready	messages_unacknowledged	messages_persistent	durable
+pedidos	0	0	0	true

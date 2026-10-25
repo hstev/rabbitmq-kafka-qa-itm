@@ -1,0 +1,14 @@
+$ ../scripts/send-orders.sh kafka 4 | grep orderId; sleep 2; docker compose kill notification-consumer; docker compose logs --since 6s notification-consumer | grep -E 'recibido|Procesado'; docker compose exec -T kafka /opt/bitnami/kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group notification-service-group | awk 'NF{ if ($1=="Consumer") print; else printf "%-28s %-14s %-10s %-15s %-15s %s\n", $1,$2,$3,$4,$5,$6 }'
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1039-MVN5QYCQ"}
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1040-MVN5QYD1"}
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1041-MVN5QYDA"}
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1042-MVN5QYDK"}
+ Container kafka-lab-notification-consumer-1 Killing 
+ Container kafka-lab-notification-consumer-1 Killed 
+notification-consumer-1  | 2026-10-25T01:37:20.236Z [notification-consumer b4ea27241635] Evento recibido: OrderCreated orderId=ORD-1039-MVN5QYCQ eventId=evt-051f0acd-19dc-4e0d-bc03-31706f59a4c4 correlationId=corr-qa-1792892240-1 topic=orders.events partition=2 offset=11
+notification-consumer-1  | 2026-10-25T01:37:22.026Z [notification-consumer b4ea27241635] Procesado orderId=ORD-1039-MVN5QYCQ partition=2 offset=11 totalProcesadosPorEstaInstancia=17
+notification-consumer-1  | 2026-10-25T01:37:22.030Z [notification-consumer b4ea27241635] Evento recibido: OrderCreated orderId=ORD-1040-MVN5QYD1 eventId=evt-2e2373b9-5b99-4718-a5e0-db320cb0ce1b correlationId=corr-qa-1792892240-2 topic=orders.events partition=1 offset=15
+GROUP                        TOPIC          PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG
+notification-service-group   orders.events  0          12              12              0
+notification-service-group   orders.events  1          15              16              1
+notification-service-group   orders.events  2          12              14              2

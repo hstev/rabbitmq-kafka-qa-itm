@@ -1,0 +1,12 @@
+$ docker compose stop notification-worker; ../scripts/send-orders.sh rabbitmq 3 | grep orderId; sleep 1; docker compose exec -T rabbitmq rabbitmqctl -q list_queues name messages_ready messages_unacknowledged messages_persistent durable; docker compose restart rabbitmq; until docker compose ps rabbitmq | grep -q healthy; do sleep 2; done; docker compose exec -T rabbitmq rabbitmqctl -q list_queues name messages_ready messages_unacknowledged messages_persistent durable
+ Container rabbitmq-lab-notification-worker-1 Stopping 
+ Container rabbitmq-lab-notification-worker-1 Stopped 
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1023-MVN4PRE4"}
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1024-MVN4PRED"}
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1025-MVN4PREL"}
+name	messages_ready	messages_unacknowledged	messages_persistent	durable
+pedidos	3	0	3	true
+ Container rabbitmq Restarting 
+ Container rabbitmq Started 
+name	messages_ready	messages_unacknowledged	messages_persistent	durable
+pedidos	3	0	3	true

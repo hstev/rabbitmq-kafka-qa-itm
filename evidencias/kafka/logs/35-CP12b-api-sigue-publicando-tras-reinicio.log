@@ -1,0 +1,11 @@
+$ ../scripts/send-orders.sh kafka 1 | grep -E 'orderId|HTTP'; docker compose logs --since 90s orders-api
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1046-MVN5SSNP"}
+HTTP 202 | tiempo total: 0.009931s
+orders-api  | 2026-10-25T01:37:20.235Z [orders-api] Evento OrderCreated publicado topic=orders.events partition=2 offset=11 orderId=ORD-1039-MVN5QYCQ eventId=evt-051f0acd-19dc-4e0d-bc03-31706f59a4c4 correlationId=corr-qa-1792892240-1 respuestaEn=1.84ms
+orders-api  | 2026-10-25T01:37:20.246Z [orders-api] Evento OrderCreated publicado topic=orders.events partition=1 offset=15 orderId=ORD-1040-MVN5QYD1 eventId=evt-2e2373b9-5b99-4718-a5e0-db320cb0ce1b correlationId=corr-qa-1792892240-2 respuestaEn=1.38ms
+orders-api  | 2026-10-25T01:37:20.256Z [orders-api] Evento OrderCreated publicado topic=orders.events partition=2 offset=12 orderId=ORD-1041-MVN5QYDA eventId=evt-6be96d13-d4d9-47c8-98eb-96d0546240c0 correlationId=corr-qa-1792892240-3 respuestaEn=1.20ms
+orders-api  | 2026-10-25T01:37:20.265Z [orders-api] Evento OrderCreated publicado topic=orders.events partition=2 offset=13 orderId=ORD-1042-MVN5QYDK eventId=evt-ac86fdfc-9ac1-4b4b-b74b-1089814f47f4 correlationId=corr-qa-1792892240-4 respuestaEn=1.16ms
+orders-api  | 2026-10-25T01:38:25.845Z [orders-api] Evento OrderCreated publicado topic=orders.events partition=1 offset=16 orderId=ORD-1043-MVN5SCZ7 eventId=evt-edde83ab-edf8-4544-8669-f3c48c817924 correlationId=corr-qa-1792892305-1 respuestaEn=1.55ms
+orders-api  | 2026-10-25T01:38:25.855Z [orders-api] Evento OrderCreated publicado topic=orders.events partition=0 offset=12 orderId=ORD-1044-MVN5SCZI eventId=evt-8bb55b42-8593-4c81-b69e-c85c10a3f404 correlationId=corr-qa-1792892305-2 respuestaEn=1.30ms
+orders-api  | 2026-10-25T01:38:25.864Z [orders-api] Evento OrderCreated publicado topic=orders.events partition=0 offset=13 orderId=ORD-1045-MVN5SCZR eventId=evt-1a7b7954-91f3-40dd-a5ae-a2bef8578af8 correlationId=corr-qa-1792892305-3 respuestaEn=1.15ms
+orders-api  | 2026-10-25T01:38:46.173Z [orders-api] Evento OrderCreated publicado topic=orders.events partition=1 offset=17 orderId=ORD-1046-MVN5SSNP eventId=evt-7b8e7c47-2b64-4873-a605-9e1469eafafc correlationId=corr-qa-1792892326-1 respuestaEn=8.05ms

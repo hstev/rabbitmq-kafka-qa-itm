@@ -1,0 +1,18 @@
+$ docker compose stop billing-consumer; ../scripts/send-orders.sh kafka 5 | grep HTTP; sleep 8; docker compose logs --since 12s inventory-consumer notification-consumer | grep Procesado
+ Container kafka-lab-billing-consumer-1 Stopping 
+ Container kafka-lab-billing-consumer-1 Stopped 
+HTTP 202 | tiempo total: 0.003973s
+HTTP 202 | tiempo total: 0.003028s
+HTTP 202 | tiempo total: 0.003104s
+HTTP 202 | tiempo total: 0.003096s
+HTTP 202 | tiempo total: 0.003012s
+notification-consumer-1  | 2026-10-25T01:27:42.637Z [notification-consumer b4ea27241635] Procesado orderId=ORD-1008-MVN5EJT2 partition=0 offset=1 totalProcesadosPorEstaInstancia=8
+notification-consumer-1  | 2026-10-25T01:27:43.952Z [notification-consumer b4ea27241635] Procesado orderId=ORD-1009-MVN5EJTD partition=0 offset=2 totalProcesadosPorEstaInstancia=9
+notification-consumer-1  | 2026-10-25T01:27:45.444Z [notification-consumer b4ea27241635] Procesado orderId=ORD-1010-MVN5EJTN partition=0 offset=3 totalProcesadosPorEstaInstancia=10
+notification-consumer-1  | 2026-10-25T01:27:47.149Z [notification-consumer b4ea27241635] Procesado orderId=ORD-1011-MVN5EJTX partition=0 offset=4 totalProcesadosPorEstaInstancia=11
+notification-consumer-1  | 2026-10-25T01:27:49.007Z [notification-consumer b4ea27241635] Procesado orderId=ORD-1012-MVN5EJU8 partition=0 offset=5 totalProcesadosPorEstaInstancia=12
+inventory-consumer-1     | 2026-10-25T01:27:42.899Z [inventory-consumer 7e47979f8adc] Procesado orderId=ORD-1008-MVN5EJT2 partition=0 offset=1 totalProcesadosPorEstaInstancia=8
+inventory-consumer-1     | 2026-10-25T01:27:44.370Z [inventory-consumer 7e47979f8adc] Procesado orderId=ORD-1009-MVN5EJTD partition=0 offset=2 totalProcesadosPorEstaInstancia=9
+inventory-consumer-1     | 2026-10-25T01:27:46.356Z [inventory-consumer 7e47979f8adc] Procesado orderId=ORD-1010-MVN5EJTN partition=0 offset=3 totalProcesadosPorEstaInstancia=10
+inventory-consumer-1     | 2026-10-25T01:27:47.954Z [inventory-consumer 7e47979f8adc] Procesado orderId=ORD-1011-MVN5EJTX partition=0 offset=4 totalProcesadosPorEstaInstancia=11
+inventory-consumer-1     | 2026-10-25T01:27:49.237Z [inventory-consumer 7e47979f8adc] Procesado orderId=ORD-1012-MVN5EJU8 partition=0 offset=5 totalProcesadosPorEstaInstancia=12

@@ -1,0 +1,30 @@
+$ docker compose --profile late up -d audit-consumer; sleep 85; docker compose logs audit-consumer | grep -E 'Unido|Procesado' | head -12; echo '...'; echo "Eventos procesados por el consumidor posterior: $(docker compose logs audit-consumer | grep -c Procesado)"; docker compose exec -T kafka /opt/bitnami/kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group audit-service-group | awk 'NF{ if ($1=="Consumer") print; else printf "%-28s %-14s %-10s %-15s %-15s %s\n", $1,$2,$3,$4,$5,$6 }'
+ Container kafka Running 
+ Container kafka-lab-audit-consumer-1 Creating 
+ Container kafka-lab-audit-consumer-1 Created 
+ Container kafka Waiting 
+ Container kafka Healthy 
+ Container kafka-init Starting 
+ Container kafka-init Started 
+ Container kafka-init Waiting 
+ Container kafka-init Exited 
+ Container kafka-lab-audit-consumer-1 Starting 
+ Container kafka-lab-audit-consumer-1 Started 
+audit-consumer-1  | 2026-10-25T01:42:22.165Z [audit-consumer e8af12ce27fe] Unido al consumer group "audit-service-group" particiones asignadas={"orders.events":[0,1,2]}
+audit-consumer-1  | 2026-10-25T01:42:23.295Z [audit-consumer e8af12ce27fe] Procesado orderId=ORD-1004-MVN5DXT5 partition=0 offset=0 totalProcesadosPorEstaInstancia=1
+audit-consumer-1  | 2026-10-25T01:42:24.652Z [audit-consumer e8af12ce27fe] Procesado orderId=ORD-1008-MVN5EJT2 partition=0 offset=1 totalProcesadosPorEstaInstancia=2
+audit-consumer-1  | 2026-10-25T01:42:26.281Z [audit-consumer e8af12ce27fe] Procesado orderId=ORD-1009-MVN5EJTD partition=0 offset=2 totalProcesadosPorEstaInstancia=3
+audit-consumer-1  | 2026-10-25T01:42:27.320Z [audit-consumer e8af12ce27fe] Procesado orderId=ORD-1010-MVN5EJTN partition=0 offset=3 totalProcesadosPorEstaInstancia=4
+audit-consumer-1  | 2026-10-25T01:42:29.220Z [audit-consumer e8af12ce27fe] Procesado orderId=ORD-1011-MVN5EJTX partition=0 offset=4 totalProcesadosPorEstaInstancia=5
+audit-consumer-1  | 2026-10-25T01:42:30.271Z [audit-consumer e8af12ce27fe] Procesado orderId=ORD-1012-MVN5EJU8 partition=0 offset=5 totalProcesadosPorEstaInstancia=6
+audit-consumer-1  | 2026-10-25T01:42:32.154Z [audit-consumer e8af12ce27fe] Procesado orderId=ORD-1017-MVN5HIQS partition=0 offset=6 totalProcesadosPorEstaInstancia=7
+audit-consumer-1  | 2026-10-25T01:42:33.659Z [audit-consumer e8af12ce27fe] Procesado orderId=ORD-1023-MVN5IA49 partition=0 offset=7 totalProcesadosPorEstaInstancia=8
+audit-consumer-1  | 2026-10-25T01:42:34.739Z [audit-consumer e8af12ce27fe] Procesado orderId=ORD-1024-MVN5IA4J partition=0 offset=8 totalProcesadosPorEstaInstancia=9
+audit-consumer-1  | 2026-10-25T01:42:36.030Z [audit-consumer e8af12ce27fe] Procesado orderId=ORD-1028-MVN5J1CO partition=0 offset=9 totalProcesadosPorEstaInstancia=10
+audit-consumer-1  | 2026-10-25T01:42:37.256Z [audit-consumer e8af12ce27fe] Procesado orderId=ORD-1029-MVN5JH2R partition=0 offset=10 totalProcesadosPorEstaInstancia=11
+...
+Eventos procesados por el consumidor posterior: 46
+GROUP                        TOPIC          PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG
+audit-service-group          orders.events  0          14              14              0
+audit-service-group          orders.events  1          18              18              0
+audit-service-group          orders.events  2          14              14              0

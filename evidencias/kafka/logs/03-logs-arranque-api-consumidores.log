@@ -1,0 +1,10 @@
+$ docker compose logs orders-api inventory-consumer billing-consumer notification-consumer
+billing-consumer-1  | 2026-10-25T01:24:59.806Z [billing-consumer 2f5abec19ebb] Conectado a Kafka (kafka:9092), suscrito a "orders.events" con groupId="billing-service-group"
+billing-consumer-1  | 2026-10-25T01:25:03.642Z [billing-consumer 2f5abec19ebb] Unido al consumer group "billing-service-group" particiones asignadas={"orders.events":[0,1,2]}
+orders-api          | 2026-10-25T01:24:59.702Z [orders-api] Escuchando HTTP en puerto 3000
+orders-api          | 2026-10-25T01:24:59.723Z [orders-api] Productor conectado a Kafka (kafka:9092), topico "orders.events"
+inventory-consumer-1  | 2026-10-25T01:24:59.374Z [inventory-consumer 7e47979f8adc] Conectado a Kafka (kafka:9092), suscrito a "orders.events" con groupId="inventory-service-group"
+inventory-consumer-1  | {"level":"ERROR","timestamp":"2026-10-25T01:24:59.382Z","logger":"kafkajs","message":"[Connection] Response GroupCoordinator(key: 10, version: 2)","broker":"kafka:9092","clientId":"inventory-consumer-7e47979f8adc","error":"The group coordinator is not available","correlationId":2,"size":55}
+inventory-consumer-1  | 2026-10-25T01:25:03.478Z [inventory-consumer 7e47979f8adc] Unido al consumer group "inventory-service-group" particiones asignadas={"orders.events":[0,1,2]}
+notification-consumer-1  | 2026-10-25T01:24:59.507Z [notification-consumer b4ea27241635] Conectado a Kafka (kafka:9092), suscrito a "orders.events" con groupId="notification-service-group"
+notification-consumer-1  | 2026-10-25T01:25:03.642Z [notification-consumer b4ea27241635] Unido al consumer group "notification-service-group" particiones asignadas={"orders.events":[0,1,2]}

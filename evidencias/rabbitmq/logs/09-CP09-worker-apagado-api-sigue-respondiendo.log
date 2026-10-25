@@ -1,0 +1,19 @@
+$ docker compose stop notification-worker && docker compose ps -a --format 'table {{.Name}}\t{{.Status}}' && ../scripts/send-orders.sh rabbitmq 3
+ Container rabbitmq-lab-notification-worker-1 Stopping 
+ Container rabbitmq-lab-notification-worker-1 Stopped 
+NAME                                 STATUS
+orders-api                           Up About a minute
+rabbitmq                             Up About a minute (healthy)
+rabbitmq-lab-notification-worker-1   Exited (0) Less than a second ago
+
+[20:04:30] Pedido 1/3 -> {"customerName":"Pedro","product":"Libro de arquitectura","quantity":1}
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1002-MVN4KQA0"}
+HTTP 202 | tiempo total: 0.002298s
+
+[20:04:30] Pedido 2/3 -> {"customerName":"Carlos","product":"Libro de arquitectura","quantity":2}
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1003-MVN4KQAA"}
+HTTP 202 | tiempo total: 0.001791s
+
+[20:04:30] Pedido 3/3 -> {"customerName":"Ana","product":"Libro de arquitectura","quantity":3}
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1004-MVN4KQAJ"}
+HTTP 202 | tiempo total: 0.001885s

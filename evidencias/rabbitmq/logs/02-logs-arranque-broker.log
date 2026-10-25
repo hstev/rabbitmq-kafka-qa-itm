@@ -1,0 +1,7 @@
+$ docker compose logs rabbitmq | grep -E 'Starting RabbitMQ|node  .*rabbit@|Management plugin: HTTP|started TCP listener|Server startup complete|Time to start'
+rabbitmq  | 2026-10-25 01:03:18.089154+00:00 [info] <0.209.0>  Starting RabbitMQ 4.4.0 on Erlang 29.1.2 [jit]
+rabbitmq  | 2026-10-25 01:03:18.089829+00:00 [info] <0.209.0>  node           : rabbit@rabbitmq
+rabbitmq  | 2026-10-25 01:03:18.593108+00:00 [info] <0.1007.0> Management plugin: HTTP (non-TLS) listener started on port 15672
+rabbitmq  | 2026-10-25 01:03:18.594581+00:00 [info] <0.1059.0> started TCP listener on [::]:5672
+rabbitmq  | 2026-10-25 01:03:18.634729+00:00 [info] <0.923.0> Server startup complete; 4 plugins started.
+rabbitmq  | 2026-10-25 01:03:18.765084+00:00 [info] <0.10.0> Time to start RabbitMQ: 1829 ms

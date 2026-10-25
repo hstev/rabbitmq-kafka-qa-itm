@@ -1,0 +1,19 @@
+$ docker compose ps --format 'table {{.Service}}\t{{.Ports}}'; echo; grep -A3 dependencies inventory-consumer/package.json; echo; grep -n 'KAFKA_BROKER' docker-compose.yml; echo; docker compose exec -T orders-api wget -qO- -T 3 http://inventory-consumer:3000 || echo '=> Los consumidores no exponen HTTP: no hay comunicacion directa'
+SERVICE                 PORTS
+kafka                   0.0.0.0:29092->29092/tcp, [::]:29092->29092/tcp
+billing-consumer        
+inventory-consumer      
+notification-consumer   
+kafka-ui                0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp
+orders-api              0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp
+
+  "dependencies": {
+    "kafkajs": "^2.2.4"
+  }
+}
+
+4:  KAFKA_BROKER: kafka:9092
+73:      - KAFKA_BROKER=kafka:9092
+
+wget: can't connect to remote host (172.18.0.3): Connection refused
+=> Los consumidores no exponen HTTP: no hay comunicacion directa

@@ -1,0 +1,10 @@
+$ ../scripts/send-orders.sh rabbitmq 3 | grep HTTP; sleep 1; docker compose exec -T rabbitmq rabbitmqctl -q list_queues name messages_ready messages_unacknowledged consumers; docker compose kill notification-worker; sleep 2; docker compose exec -T rabbitmq rabbitmqctl -q list_queues name messages_ready messages_unacknowledged consumers
+HTTP 202 | tiempo total: 0.002052s
+HTTP 202 | tiempo total: 0.001589s
+HTTP 202 | tiempo total: 0.001289s
+name	messages_ready	messages_unacknowledged	consumers
+pedidos	2	1	1
+ Container rabbitmq-lab-notification-worker-1 Killing 
+ Container rabbitmq-lab-notification-worker-1 Killed 
+name	messages_ready	messages_unacknowledged	consumers
+pedidos	3	0	0

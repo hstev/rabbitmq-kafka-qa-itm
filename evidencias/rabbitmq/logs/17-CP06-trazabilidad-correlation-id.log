@@ -1,0 +1,5 @@
+$ curl -s -X POST http://localhost:3000/orders -H 'Content-Type: application/json' -H 'X-Correlation-Id: corr-traza-rabbit-01' -d '{"customerName":"Lucia","product":"Libro de QA","quantity":2}'; echo; sleep 6; docker compose logs orders-api notification-worker | grep corr-traza-rabbit-01
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1005-MVN4MPXL"}
+notification-worker-1  | 2026-10-25T01:06:03.083Z [notification-worker bd102aeb336a] Mensaje recibido orderId=ORD-1005-MVN4MPXL correlationId=corr-traza-rabbit-01 {"type":"ProcessOrder","orderId":"ORD-1005-MVN4MPXL","correlationId":"corr-traza-rabbit-01","customerName":"Lucia","product":"Libro de QA","quantity":2,"createdAt":"2026-10-25T01:06:03.081Z"}
+notification-worker-1  | 2026-10-25T01:06:07.367Z [notification-worker bd102aeb336a] ACK enviado orderId=ORD-1005-MVN4MPXL correlationId=corr-traza-rabbit-01 totalProcesadosPorEstaInstancia=4
+orders-api             | 2026-10-25T01:06:03.081Z [orders-api] Mensaje publicado en cola "pedidos" orderId=ORD-1005-MVN4MPXL correlationId=corr-traza-rabbit-01 respuestaEn=0.19ms

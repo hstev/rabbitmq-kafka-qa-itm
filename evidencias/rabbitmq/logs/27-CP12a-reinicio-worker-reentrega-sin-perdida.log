@@ -1,0 +1,14 @@
+$ docker compose start notification-worker; sleep 14; docker compose logs --since 16s notification-worker | grep -E 'Conectado|recibido|ACK'; docker compose exec -T rabbitmq rabbitmqctl -q list_queues name messages_ready messages_unacknowledged consumers
+ Container rabbitmq Waiting 
+ Container rabbitmq Healthy 
+ Container rabbitmq-lab-notification-worker-1 Starting 
+ Container rabbitmq-lab-notification-worker-1 Started 
+notification-worker-1  | 2026-10-25T01:08:04.799Z [notification-worker bd102aeb336a] Conectado a RabbitMQ. Escuchando cola "pedidos" (prefetch=1, ack manual)
+notification-worker-1  | 2026-10-25T01:08:04.801Z [notification-worker bd102aeb336a] Mensaje recibido (REENTREGADO) orderId=ORD-1020-MVN4P3UT correlationId=corr-qa-1792890474-1 {"type":"ProcessOrder","orderId":"ORD-1020-MVN4P3UT","correlationId":"corr-qa-1792890474-1","customerName":"Pedro","product":"Libro de arquitectura","quantity":1,"createdAt":"2026-10-25T01:07:54.437Z"}
+notification-worker-1  | 2026-10-25T01:08:09.230Z [notification-worker bd102aeb336a] ACK enviado orderId=ORD-1020-MVN4P3UT correlationId=corr-qa-1792890474-1 totalProcesadosPorEstaInstancia=1
+notification-worker-1  | 2026-10-25T01:08:09.231Z [notification-worker bd102aeb336a] Mensaje recibido orderId=ORD-1021-MVN4P3V3 correlationId=corr-qa-1792890474-2 {"type":"ProcessOrder","orderId":"ORD-1021-MVN4P3V3","correlationId":"corr-qa-1792890474-2","customerName":"Carlos","product":"Libro de arquitectura","quantity":2,"createdAt":"2026-10-25T01:07:54.447Z"}
+notification-worker-1  | 2026-10-25T01:08:12.167Z [notification-worker bd102aeb336a] ACK enviado orderId=ORD-1021-MVN4P3V3 correlationId=corr-qa-1792890474-2 totalProcesadosPorEstaInstancia=2
+notification-worker-1  | 2026-10-25T01:08:12.167Z [notification-worker bd102aeb336a] Mensaje recibido orderId=ORD-1022-MVN4P3VB correlationId=corr-qa-1792890474-3 {"type":"ProcessOrder","orderId":"ORD-1022-MVN4P3VB","correlationId":"corr-qa-1792890474-3","customerName":"Ana","product":"Libro de arquitectura","quantity":3,"createdAt":"2026-10-25T01:07:54.455Z"}
+notification-worker-1  | 2026-10-25T01:08:15.160Z [notification-worker bd102aeb336a] ACK enviado orderId=ORD-1022-MVN4P3VB correlationId=corr-qa-1792890474-3 totalProcesadosPorEstaInstancia=3
+name	messages_ready	messages_unacknowledged	consumers
+pedidos	0	0	1

@@ -1,0 +1,12 @@
+{
+  "name": "inventory-consumer",
+  "version": "1.0.0",
+  "description": "Consumidor de eventos OrderCreated desde Kafka",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "kafkajs": "^2.2.4"
+  }
+}

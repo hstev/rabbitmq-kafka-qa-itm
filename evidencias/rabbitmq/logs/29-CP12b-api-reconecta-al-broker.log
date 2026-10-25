@@ -1,0 +1,6 @@
+$ docker compose logs --since 40s orders-api
+orders-api  | 2026-10-25T01:08:24.941Z [orders-api] Mensaje publicado en cola "pedidos" orderId=ORD-1023-MVN4PRE4 correlationId=corr-qa-1792890504-1 respuestaEn=0.11ms
+orders-api  | 2026-10-25T01:08:24.949Z [orders-api] Mensaje publicado en cola "pedidos" orderId=ORD-1024-MVN4PRED correlationId=corr-qa-1792890504-2 respuestaEn=0.07ms
+orders-api  | 2026-10-25T01:08:24.957Z [orders-api] Mensaje publicado en cola "pedidos" orderId=ORD-1025-MVN4PREL correlationId=corr-qa-1792890504-3 respuestaEn=0.07ms
+orders-api  | 2026-10-25T01:08:26.485Z [orders-api] Conexion con RabbitMQ cerrada, reconectando...
+orders-api  | 2026-10-25T01:08:28.532Z [orders-api] Conectado a RabbitMQ (amqp://***@rabbitmq:5672), cola "pedidos" declarada (durable)

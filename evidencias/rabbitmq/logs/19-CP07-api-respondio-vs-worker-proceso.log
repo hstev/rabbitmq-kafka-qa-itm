@@ -1,0 +1,14 @@
+$ docker compose logs --since 40s orders-api | grep publicado; echo; docker compose logs --since 40s notification-worker | grep 'ACK enviado'
+orders-api  | 2026-10-25T01:06:03.081Z [orders-api] Mensaje publicado en cola "pedidos" orderId=ORD-1005-MVN4MPXL correlationId=corr-traza-rabbit-01 respuestaEn=0.19ms
+orders-api  | 2026-10-25T01:06:14.633Z [orders-api] Mensaje publicado en cola "pedidos" orderId=ORD-1006-MVN4MYUH correlationId=corr-qa-1792890374-1 respuestaEn=0.15ms
+orders-api  | 2026-10-25T01:06:14.642Z [orders-api] Mensaje publicado en cola "pedidos" orderId=ORD-1007-MVN4MYUQ correlationId=corr-qa-1792890374-2 respuestaEn=0.12ms
+orders-api  | 2026-10-25T01:06:14.651Z [orders-api] Mensaje publicado en cola "pedidos" orderId=ORD-1008-MVN4MYUZ correlationId=corr-qa-1792890374-3 respuestaEn=0.12ms
+orders-api  | 2026-10-25T01:06:14.661Z [orders-api] Mensaje publicado en cola "pedidos" orderId=ORD-1009-MVN4MYV8 correlationId=corr-qa-1792890374-4 respuestaEn=0.19ms
+orders-api  | 2026-10-25T01:06:14.670Z [orders-api] Mensaje publicado en cola "pedidos" orderId=ORD-1010-MVN4MYVI correlationId=corr-qa-1792890374-5 respuestaEn=0.22ms
+
+notification-worker-1  | 2026-10-25T01:06:07.367Z [notification-worker bd102aeb336a] ACK enviado orderId=ORD-1005-MVN4MPXL correlationId=corr-traza-rabbit-01 totalProcesadosPorEstaInstancia=4
+notification-worker-1  | 2026-10-25T01:06:17.969Z [notification-worker bd102aeb336a] ACK enviado orderId=ORD-1006-MVN4MYUH correlationId=corr-qa-1792890374-1 totalProcesadosPorEstaInstancia=5
+notification-worker-1  | 2026-10-25T01:06:20.474Z [notification-worker bd102aeb336a] ACK enviado orderId=ORD-1007-MVN4MYUQ correlationId=corr-qa-1792890374-2 totalProcesadosPorEstaInstancia=6
+notification-worker-1  | 2026-10-25T01:06:23.033Z [notification-worker bd102aeb336a] ACK enviado orderId=ORD-1008-MVN4MYUZ correlationId=corr-qa-1792890374-3 totalProcesadosPorEstaInstancia=7
+notification-worker-1  | 2026-10-25T01:06:26.394Z [notification-worker bd102aeb336a] ACK enviado orderId=ORD-1009-MVN4MYV8 correlationId=corr-qa-1792890374-4 totalProcesadosPorEstaInstancia=8
+notification-worker-1  | 2026-10-25T01:06:31.369Z [notification-worker bd102aeb336a] ACK enviado orderId=ORD-1010-MVN4MYVI correlationId=corr-qa-1792890374-5 totalProcesadosPorEstaInstancia=9

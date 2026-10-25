@@ -1,0 +1,33 @@
+$ docker compose up -d --scale inventory-consumer=3 && docker compose ps inventory-consumer --format 'table {{.Name}}\t{{.Status}}'
+ Container kafka-ui Running 
+ Container orders-api Running 
+ Container kafka-lab-inventory-consumer-1 Running 
+ Container kafka-lab-billing-consumer-1 Running 
+ Container kafka Running 
+ Container kafka-lab-notification-consumer-1 Running 
+ Container kafka-lab-inventory-consumer-3 Creating 
+ Container kafka-lab-inventory-consumer-2 Creating 
+ Container kafka-lab-inventory-consumer-3 Created 
+ Container kafka-lab-inventory-consumer-2 Created 
+ Container kafka Waiting 
+ Container kafka Waiting 
+ Container kafka Healthy 
+ Container kafka Healthy 
+ Container kafka-init Starting 
+ Container kafka-init Started 
+ Container kafka-init Waiting 
+ Container kafka-init Waiting 
+ Container kafka-init Waiting 
+ Container kafka-init Waiting 
+ Container kafka-init Exited 
+ Container kafka-lab-inventory-consumer-2 Starting 
+ Container kafka-init Exited 
+ Container kafka-init Exited 
+ Container kafka-init Exited 
+ Container kafka-lab-inventory-consumer-2 Started 
+ Container kafka-lab-inventory-consumer-3 Starting 
+ Container kafka-lab-inventory-consumer-3 Started 
+NAME                             STATUS
+kafka-lab-inventory-consumer-1   Up 11 minutes
+kafka-lab-inventory-consumer-2   Up Less than a second
+kafka-lab-inventory-consumer-3   Up Less than a second

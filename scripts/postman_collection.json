@@ -1,0 +1,41 @@
+{
+  "info": {
+    "name": "Taller Pruebas de Integracion - RabbitMQ y Kafka",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "RabbitMQ - POST /orders",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "http://localhost:3000/orders",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"customerName\": \"Pedro\",\n    \"product\": \"Libro de arquitectura\",\n    \"quantity\": 1\n}"
+        }
+      }
+    },
+    {
+      "name": "Kafka - POST /orders",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "http://localhost:3000/orders",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"customerName\": \"Pedro\",\n    \"product\": \"Libro de arquitectura\",\n    \"quantity\": 1,\n    \"unitPrice\": 85000\n}"
+        }
+      }
+    },
+    {
+      "name": "Validacion - JSON invalido (400)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "http://localhost:3000/orders",
+        "body": { "mode": "raw", "raw": "{\n    \"product\": \"Sin cliente\"\n}" }
+      }
+    }
+  ]
+}

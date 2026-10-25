@@ -1,0 +1,15 @@
+$ curl -i -X POST http://localhost:3000/orders -H 'Content-Type: application/json' -d '{"customerName":"Pedro","product":"Libro de arquitectura","quantity":1}'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   171  100   100  100    71   7300   5183 --:--:-- --:--:-- --:--:-- 13153
+HTTP/1.1 202 Accepted
+X-Powered-By: Express
+X-Correlation-Id: corr-93c69e0a-49e5-4fe5-aa82-964e253b3c87
+Content-Type: application/json; charset=utf-8
+Content-Length: 100
+ETag: W/"64-ltRoYCyblgGMXBxmjcs6Bb1sYF0"
+Date: Sun, 25 Oct 2026 01:04:09 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"status":"accepted","message":"Pedido recibido y enviado a RabbitMQ","orderId":"ORD-1001-MVN4KA3B"}

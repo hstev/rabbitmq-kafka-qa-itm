@@ -1,0 +1,20 @@
+$ docker compose stop billing-consumer; ../scripts/send-orders.sh kafka 3 | grep orderId; docker compose exec -T kafka /opt/bitnami/kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group billing-service-group | awk 'NF{ if ($1=="Consumer") print; else printf "%-28s %-14s %-10s %-15s %-15s %s\n", $1,$2,$3,$4,$5,$6 }'; docker compose restart kafka; until docker compose ps kafka | grep -q healthy; do sleep 2; done; docker compose exec -T kafka /opt/bitnami/kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group billing-service-group | awk 'NF{ if ($1=="Consumer") print; else printf "%-28s %-14s %-10s %-15s %-15s %s\n", $1,$2,$3,$4,$5,$6 }'
+ Container kafka-lab-billing-consumer-1 Stopping 
+ Container kafka-lab-billing-consumer-1 Stopped 
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1043-MVN5SCZ7"}
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1044-MVN5SCZI"}
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1045-MVN5SCZR"}
+
+Consumer group 'billing-service-group' has no active members.
+GROUP                        TOPIC          PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG
+billing-service-group        orders.events  0          12              14              2
+billing-service-group        orders.events  1          16              17              1
+billing-service-group        orders.events  2          14              14              0
+ Container kafka Restarting 
+ Container kafka Started 
+
+Consumer group 'billing-service-group' has no active members.
+GROUP                        TOPIC          PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG
+billing-service-group        orders.events  0          12              14              2
+billing-service-group        orders.events  1          16              17              1
+billing-service-group        orders.events  2          14              14              0

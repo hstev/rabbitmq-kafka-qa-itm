@@ -1,0 +1,9 @@
+$ docker compose ps -a --format 'table {{.Name}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'
+NAME                                IMAGE                             STATUS                      PORTS
+kafka                               bitnamilegacy/kafka:3.7           Up 25 seconds (healthy)     0.0.0.0:29092->29092/tcp, [::]:29092->29092/tcp
+kafka-init                          bitnamilegacy/kafka:3.7           Exited (0) 16 seconds ago   
+kafka-lab-billing-consumer-1        kafka-lab-billing-consumer        Up 15 seconds               
+kafka-lab-inventory-consumer-1      kafka-lab-inventory-consumer      Up 16 seconds               
+kafka-lab-notification-consumer-1   kafka-lab-notification-consumer   Up 16 seconds               
+kafka-ui                            provectuslabs/kafka-ui:v0.7.2     Up 18 seconds               0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp
+orders-api                          kafka-lab-orders-api              Up 16 seconds               0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp

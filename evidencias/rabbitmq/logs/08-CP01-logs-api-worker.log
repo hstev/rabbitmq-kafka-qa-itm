@@ -1,0 +1,6 @@
+$ docker compose logs --since 1m orders-api notification-worker
+orders-api  | 2026-10-25T01:04:09.240Z [orders-api] Mensaje publicado en cola "pedidos" orderId=ORD-1001-MVN4KA3B correlationId=corr-93c69e0a-49e5-4fe5-aa82-964e253b3c87 respuestaEn=1.28ms
+notification-worker-1  | 2026-10-25T01:04:09.246Z [notification-worker bd102aeb336a] Mensaje recibido orderId=ORD-1001-MVN4KA3B correlationId=corr-93c69e0a-49e5-4fe5-aa82-964e253b3c87 {"type":"ProcessOrder","orderId":"ORD-1001-MVN4KA3B","correlationId":"corr-93c69e0a-49e5-4fe5-aa82-964e253b3c87","customerName":"Pedro","product":"Libro de arquitectura","quantity":1,"createdAt":"2026-10-25T01:04:09.239Z"}
+orders-api             | 2026-10-25T01:04:14.856Z [orders-api] Pedido rechazado por validacion: customerName es obligatorio; quantity debe ser un entero positivo
+notification-worker-1  | 2026-10-25T01:04:09.247Z [notification-worker bd102aeb336a] Simulando envio de notificacion a Pedro (4380ms)...
+notification-worker-1  | 2026-10-25T01:04:13.632Z [notification-worker bd102aeb336a] ACK enviado orderId=ORD-1001-MVN4KA3B correlationId=corr-93c69e0a-49e5-4fe5-aa82-964e253b3c87 totalProcesadosPorEstaInstancia=1

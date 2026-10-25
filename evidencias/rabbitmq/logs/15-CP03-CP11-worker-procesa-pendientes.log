@@ -1,0 +1,11 @@
+$ docker compose logs --since 40s notification-worker
+notification-worker-1  | 2026-10-25T01:05:16.750Z [notification-worker bd102aeb336a] Conectado a RabbitMQ. Escuchando cola "pedidos" (prefetch=1, ack manual)
+notification-worker-1  | 2026-10-25T01:05:16.752Z [notification-worker bd102aeb336a] Mensaje recibido (REENTREGADO) orderId=ORD-1002-MVN4KQA0 correlationId=corr-qa-1792890270-1 {"type":"ProcessOrder","orderId":"ORD-1002-MVN4KQA0","correlationId":"corr-qa-1792890270-1","customerName":"Pedro","product":"Libro de arquitectura","quantity":1,"createdAt":"2026-10-25T01:04:30.216Z"}
+notification-worker-1  | 2026-10-25T01:05:16.752Z [notification-worker bd102aeb336a] Simulando envio de notificacion a Pedro (3293ms)...
+notification-worker-1  | 2026-10-25T01:05:20.050Z [notification-worker bd102aeb336a] ACK enviado orderId=ORD-1002-MVN4KQA0 correlationId=corr-qa-1792890270-1 totalProcesadosPorEstaInstancia=1
+notification-worker-1  | 2026-10-25T01:05:20.051Z [notification-worker bd102aeb336a] Mensaje recibido orderId=ORD-1003-MVN4KQAA correlationId=corr-qa-1792890270-2 {"type":"ProcessOrder","orderId":"ORD-1003-MVN4KQAA","correlationId":"corr-qa-1792890270-2","customerName":"Carlos","product":"Libro de arquitectura","quantity":2,"createdAt":"2026-10-25T01:04:30.226Z"}
+notification-worker-1  | 2026-10-25T01:05:20.051Z [notification-worker bd102aeb336a] Simulando envio de notificacion a Carlos (2963ms)...
+notification-worker-1  | 2026-10-25T01:05:23.017Z [notification-worker bd102aeb336a] ACK enviado orderId=ORD-1003-MVN4KQAA correlationId=corr-qa-1792890270-2 totalProcesadosPorEstaInstancia=2
+notification-worker-1  | 2026-10-25T01:05:23.018Z [notification-worker bd102aeb336a] Mensaje recibido orderId=ORD-1004-MVN4KQAJ correlationId=corr-qa-1792890270-3 {"type":"ProcessOrder","orderId":"ORD-1004-MVN4KQAJ","correlationId":"corr-qa-1792890270-3","customerName":"Ana","product":"Libro de arquitectura","quantity":3,"createdAt":"2026-10-25T01:04:30.235Z"}
+notification-worker-1  | 2026-10-25T01:05:23.018Z [notification-worker bd102aeb336a] Simulando envio de notificacion a Ana (2935ms)...
+notification-worker-1  | 2026-10-25T01:05:25.954Z [notification-worker bd102aeb336a] ACK enviado orderId=ORD-1004-MVN4KQAJ correlationId=corr-qa-1792890270-3 totalProcesadosPorEstaInstancia=3

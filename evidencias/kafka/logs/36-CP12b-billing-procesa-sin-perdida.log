@@ -1,0 +1,18 @@
+$ docker compose start billing-consumer; sleep 15; docker compose logs --since 17s billing-consumer | grep -E 'Unido|Procesado'; docker compose exec -T kafka /opt/bitnami/kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group billing-service-group | awk 'NF{ if ($1=="Consumer") print; else printf "%-28s %-14s %-10s %-15s %-15s %s\n", $1,$2,$3,$4,$5,$6 }'
+ Container kafka Waiting 
+ Container kafka Healthy 
+ Container kafka-init Starting 
+ Container kafka-init Started 
+ Container kafka-init Waiting 
+ Container kafka-init Exited 
+ Container kafka-lab-billing-consumer-1 Starting 
+ Container kafka-lab-billing-consumer-1 Started 
+billing-consumer-1  | 2026-10-25T01:38:57.728Z [billing-consumer 2f5abec19ebb] Unido al consumer group "billing-service-group" particiones asignadas={"orders.events":[0,1,2]}
+billing-consumer-1  | 2026-10-25T01:38:58.850Z [billing-consumer 2f5abec19ebb] Procesado orderId=ORD-1043-MVN5SCZ7 partition=1 offset=16 totalProcesadosPorEstaInstancia=1
+billing-consumer-1  | 2026-10-25T01:38:59.888Z [billing-consumer 2f5abec19ebb] Procesado orderId=ORD-1046-MVN5SSNP partition=1 offset=17 totalProcesadosPorEstaInstancia=2
+billing-consumer-1  | 2026-10-25T01:39:00.898Z [billing-consumer 2f5abec19ebb] Procesado orderId=ORD-1044-MVN5SCZI partition=0 offset=12 totalProcesadosPorEstaInstancia=3
+billing-consumer-1  | 2026-10-25T01:39:01.928Z [billing-consumer 2f5abec19ebb] Procesado orderId=ORD-1045-MVN5SCZR partition=0 offset=13 totalProcesadosPorEstaInstancia=4
+GROUP                        TOPIC          PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG
+billing-service-group        orders.events  0          14              14              0
+billing-service-group        orders.events  1          18              18              0
+billing-service-group        orders.events  2          14              14              0

@@ -1,0 +1,7 @@
+$ docker compose exec -T kafka /opt/bitnami/kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group billing-service-group | awk 'NF{ if ($1=="Consumer") print; else printf "%-28s %-14s %-10s %-15s %-15s %s\n", $1,$2,$3,$4,$5,$6 }'
+
+Consumer group 'billing-service-group' has no active members.
+GROUP                        TOPIC          PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG
+billing-service-group        orders.events  0          1               6               5
+billing-service-group        orders.events  1          2               2               0
+billing-service-group        orders.events  2          4               4               0

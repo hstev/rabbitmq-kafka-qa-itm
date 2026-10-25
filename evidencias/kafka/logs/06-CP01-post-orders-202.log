@@ -1,0 +1,15 @@
+$ curl -i -X POST http://localhost:3000/orders -H 'Content-Type: application/json' -d '{"customerName":"Pedro","product":"Libro de arquitectura","quantity":1,"unitPrice":85000}'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   209  100   120  100    89   3952   2931 --:--:-- --:--:-- --:--:--  6966
+HTTP/1.1 202 Accepted
+X-Powered-By: Express
+X-Correlation-Id: corr-00b0c4d5-712a-4d19-aef0-991cfe54cf1a
+Content-Type: application/json; charset=utf-8
+Content-Length: 120
+ETag: W/"78-2M1w3jm1ekk7ZsBJB5XR72ocHpE"
+Date: Sun, 25 Oct 2026 01:25:49 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"status":"accepted","message":"Pedido recibido y evento OrderCreated publicado en Kafka","orderId":"ORD-1001-MVN5C588"}

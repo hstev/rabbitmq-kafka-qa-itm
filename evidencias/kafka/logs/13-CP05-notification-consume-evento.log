@@ -1,0 +1,4 @@
+$ docker compose logs notification-consumer | grep -E 'Unido|recibido|Procesado'
+notification-consumer-1  | 2026-10-25T01:25:03.642Z [notification-consumer b4ea27241635] Unido al consumer group "notification-service-group" particiones asignadas={"orders.events":[0,1,2]}
+notification-consumer-1  | 2026-10-25T01:25:49.325Z [notification-consumer b4ea27241635] Evento recibido: OrderCreated orderId=ORD-1001-MVN5C588 eventId=evt-b1b907af-7d12-424e-b224-d7ab4a278c02 correlationId=corr-00b0c4d5-712a-4d19-aef0-991cfe54cf1a topic=orders.events partition=1 offset=0
+notification-consumer-1  | 2026-10-25T01:25:51.168Z [notification-consumer b4ea27241635] Procesado orderId=ORD-1001-MVN5C588 partition=1 offset=0 totalProcesadosPorEstaInstancia=1

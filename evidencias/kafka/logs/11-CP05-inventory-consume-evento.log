@@ -1,0 +1,4 @@
+$ docker compose logs inventory-consumer | grep -E 'Unido|recibido|Procesado'
+inventory-consumer-1  | 2026-10-25T01:25:03.478Z [inventory-consumer 7e47979f8adc] Unido al consumer group "inventory-service-group" particiones asignadas={"orders.events":[0,1,2]}
+inventory-consumer-1  | 2026-10-25T01:25:49.325Z [inventory-consumer 7e47979f8adc] Evento recibido: OrderCreated orderId=ORD-1001-MVN5C588 eventId=evt-b1b907af-7d12-424e-b224-d7ab4a278c02 correlationId=corr-00b0c4d5-712a-4d19-aef0-991cfe54cf1a topic=orders.events partition=1 offset=0
+inventory-consumer-1  | 2026-10-25T01:25:50.801Z [inventory-consumer 7e47979f8adc] Procesado orderId=ORD-1001-MVN5C588 partition=1 offset=0 totalProcesadosPorEstaInstancia=1
